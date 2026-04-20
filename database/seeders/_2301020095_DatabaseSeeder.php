@@ -18,7 +18,7 @@ class _2301020095_DatabaseSeeder extends Seeder
         \App\Models\_2301020109_User::create([
             'nama_user' => 'Admin',
             'email' => 'admin@admin.com',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('admin'),
             'role' => 'admin',
         ]);
 
@@ -26,14 +26,14 @@ class _2301020095_DatabaseSeeder extends Seeder
         $kaprodi1 = \App\Models\_2301020109_User::create([
             'nama_user' => 'Kaprodi Teknik Informatika',
             'email' => 'kaprodi.ti@umrah.co.id',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('kaprodi'),
             'role' => 'kaprodi',
         ]);
 
         $kaprodi2 = \App\Models\_2301020109_User::create([
             'nama_user' => 'Kaprodi Teknik Perkapalan',
             'email' => 'kaprodi.tp@umrah.co.id',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('kaprodi'),
             'role' => 'kaprodi',
         ]);
 
@@ -41,7 +41,7 @@ class _2301020095_DatabaseSeeder extends Seeder
         \App\Models\_2301020109_User::create([
             'nama_user' => 'Pimpinan Fakultas',
             'email' => 'pimpinan@umrah.co.id',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('pimpinan'),
             'role' => 'pimpinan',
         ]);
 
@@ -286,6 +286,22 @@ class _2301020095_DatabaseSeeder extends Seeder
         \App\Models\PertanyaanPeriodeKuisioner::create([
             'id_periode_kuisioner' => $periode1->id_periode,
             'id_pertanyaan' => $pertanyaan5->id_pertanyaan,
+        ]);
+
+        // Create Mahasiswa User
+        $mahasiswa_user = \App\Models\_2301020109_User::create([
+            'nama_user' => 'Rizqi Amanullah',
+            'email' => '2301020002@umrah.ac.id',
+            'password' => bcrypt('2301020002'),
+            'role' => 'mahasiswa',
+        ]);
+
+        // Create Mahasiswa Record
+        \App\Models\_2301020002_Mahasiswa::create([
+            'nim' => '2301020002',
+            'nama_mahasiswa' => 'Rizqi Amanullah',
+            'id_user_mahasiswa' => $mahasiswa_user->id_user,
+            'id_prodi' => $prodi1->id_prodi,
         ]);
     }
 }

@@ -20,8 +20,8 @@ Route::get('/', function () {
             default => redirect()->route('login'),
         };
     }
-    return redirect()->route('login');
-});
+    return view('landing');
+})->name('landing');
 
 // Auth Routes
 Route::get('/login', [_2301020109_AuthController::class, 'login'])->name('login');
