@@ -1,59 +1,255 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎓 Aplikasi Kuisioner - Universitas Maritim Raja Ali Haji
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel](https://img.shields.io/badge/Laravel-11.x-red?style=flat-square&logo=laravel)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.1+-blue?style=flat-square&logo=php)](https://www.php.net)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0+-blue?style=flat-square&logo=mysql)](https://www.mysql.com)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-## About Laravel
+Sistem aplikasi kuisioner terintegrasi untuk Universitas Maritim Raja Ali Haji yang memfasilitasi pengumpulan feedback dan evaluasi pembelajaran dari mahasiswa secara terstruktur dan efisien.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📸 Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### ✨ Fitur Utama
+- **🔐 Sistem Autentikasi Multi-Role** - Admin, Kaprodi, Pimpinan, dan Mahasiswa
+- **📋 Manajemen Kuisioner** - Kelola periode, pertanyaan, dan pilihan jawaban
+- **📊 Dashboard Analytics** - Visualisasi data dan laporan hasil kuisioner
+- **👥 Manajemen Data Master** - Fakultas, jurusan, prodi, dan mahasiswa
+- **📱 Responsive Design** - Aksesibel dari berbagai perangkat
+- **🔒 Keamanan Data** - Input validation, password encryption, authorization checks
+- **📈 Pelaporan Komprehensif** - Generate laporan per prodi, fakultas, atau periode
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🎯 Peran Pengguna
 
-## Learning Laravel
+| Role | Deskripsi |
+|------|-----------|
+| **Admin** | Mengelola semua data master (Fakultas, Jurusan, Prodi, Mahasiswa, User) |
+| **Kaprodi** | Mengelola periode kuisioner, pertanyaan, dan melihat hasil jawaban |
+| **Pimpinan** | Melihat summary dan laporan dari semua prodi di fakultas |
+| **Mahasiswa** | Mengisi kuisioner yang tersedia sesuai program studi mereka |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Quick Start
 
-## Laravel Sponsors
+### Prerequisites
+- **PHP** 8.1 atau lebih tinggi
+- **MySQL/MariaDB** 8.0 atau lebih tinggi
+- **Composer** terbaru
+- **Node.js** 14.x atau lebih tinggi
+- **Laragon** (untuk Windows) atau XAMPP/LAMP
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Installation
 
-### Premium Partners
+#### 1. Clone/Download Project
+```bash
+cd c:\laragon\www\
+# Project sudah ada di folder aplikasi-kuisioner
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+#### 2. Install Dependencies
+```bash
+cd aplikasi-kuisioner
 
-## Contributing
+# Install PHP dependencies
+composer install
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Install Node dependencies
+npm install
+```
 
-## Code of Conduct
+#### 3. Setup Environment File
+```bash
+# Copy .env.example ke .env (jika belum ada)
+cp .env.example .env
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Generate application key
+php artisan key:generate
+```
 
-## Security Vulnerabilities
+#### 4. Setup Database
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**Option A: Gunakan MySQL CLI (Recommended)**
+```bash
+# Buat database baru
+mysql -u root -e "DROP DATABASE IF EXISTS aplikasi_kuisioner;"
+mysql -u root -e "CREATE DATABASE aplikasi_kuisioner CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 
-## License
+# Jalankan migration dengan seed
+php artisan migrate:fresh --seed
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Option B: Gunakan PhpMyAdmin**
+1. Buka `http://localhost/phpmyadmin`
+2. Login dan buat database baru bernama `aplikasi_kuisioner`
+3. Jalankan `php artisan migrate:fresh --seed` di terminal
+
+#### 5. Compile Assets
+```bash
+# Development mode
+npm run dev
+
+# Production mode
+npm run build
+```
+
+#### 6. Generate Storage Link
+```bash
+php artisan storage:link
+```
+
+#### 7. Clear Cache
+```bash
+php artisan cache:clear
+php artisan view:clear
+php artisan config:clear
+```
+
+#### 8. Start Development Server
+
+**Option A: Menggunakan Laragon**
+```bash
+# Cukup start Laragon, aplikasi tersedia di:
+# http://localhost/aplikasi-kuisioner
+```
+
+**Option B: Menggunakan Artisan Serve**
+```bash
+php artisan serve
+# Akses di http://localhost:8000
+```
+
+---
+
+## 👤 Test Accounts
+
+Setelah aplikasi berjalan, gunakan akun-akun berikut untuk login:
+
+### Admin Account
+```
+Email: admin@admin.com
+Password: admin
+```
+
+### Kaprodi Accounts
+```
+Email: kaprodi.ti@umrah.co.id
+Password: kaprodi
+(Teknik Informatika)
+
+Email: kaprodi.tp@umrah.co.id
+Password: kaprodi
+(Teknik Perkapalan)
+```
+
+### Pimpinan Account
+```
+Email: pimpinan@umrah.co.id
+Password: pimpinan
+```
+
+### Mahasiswa Account
+```
+Email: 2301020002@umrah.ac.id
+Password: 2301020002
+NIM: 2301020002
+Nama: Rizqi Amanullah
+```
+
+---
+
+## 📁 Project Structure
+
+```
+aplikasi-kuisioner/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/     # Controller untuk setiap fitur
+│   │   └── Middleware/      # Authentication & Authorization
+│   └── Models/              # Eloquent Models
+├── database/
+│   ├── migrations/          # Schema database
+│   └── seeders/             # Database seeders
+├── resources/
+│   ├── css/                 # Stylesheet
+│   ├── js/                  # JavaScript files
+│   └── views/               # Blade templates
+│       ├── admin/           # Views untuk Admin
+│       ├── kaprodi/         # Views untuk Kaprodi
+│       ├── mahasiswa/       # Views untuk Mahasiswa
+│       ├── pimpinan/        # Views untuk Pimpinan
+│       ├── auth/            # Login & Auth views
+│       └── landing.blade.php # Landing page
+├── routes/
+│   └── _2301020095_web.php  # Web routes
+├── public/                  # Public assets
+├── config/                  # Configuration files
+└── storage/                 # Logs, cache, uploads
+```
+
+---
+
+## 🔧 Key Technologies
+
+| Technology | Purpose |
+|-----------|---------|
+| **Laravel 11** | Backend framework |
+| **Blade** | Template engine |
+| **Eloquent ORM** | Database abstraction |
+| **Tailwind CSS** | Styling framework |
+| **MySQL** | Database |
+| **Vite** | Asset bundler |
+
+---
+
+## 📚 Documentation
+
+Untuk informasi lebih lengkap, lihat file dokumentasi:
+- [SETUPPROJECT.md](SETUPPROJECT.md) - Panduan setup lengkap
+- [PERBEDAAN_LOGIN_VULNERABLE_VS_SECURE.md](PERBEDAAN_LOGIN_VULNERABLE_VS_SECURE.md) - Perbandingan keamanan login
+
+---
+
+## 🐛 Troubleshooting
+
+### PHP Command Not Found
+```powershell
+# Gunakan full path ke PHP Laragon
+$phpPath = Get-Item "C:\laragon\bin\php\php-*-Win32-vs16-x64\php.exe" | Select-Object -Last 1 -ExpandProperty FullName
+& $phpPath artisan serve
+```
+
+### Database Connection Error
+- Pastikan MySQL service sedang berjalan
+- Verify `.env` file dengan `DB_HOST`, `DB_NAME`, `DB_USERNAME`, `DB_PASSWORD`
+- Cek di PhpMyAdmin apakah database sudah terbuat
+
+### Assets Not Loading
+```bash
+npm install
+npm run dev
+php artisan storage:link
+```
+
+### Duplicate Entry Error
+```bash
+php artisan migrate:fresh --seed
+```
+
+---
+
+## 👥 Development Team
+
+| Nama |
+|------|
+| Rizqi Amanullah |
+
+---
+
+## 📝 License
+
+Project ini dibuat atas kebutuhan kuliah.
+
+---
+
+**Last Updated:** April 2025  
+**Version:** 1.0.0
